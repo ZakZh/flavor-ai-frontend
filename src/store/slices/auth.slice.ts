@@ -114,8 +114,11 @@ const authSlice = createSlice({
                 state.error = null;
                 state.fieldErrors = {};
             })
-            .addCase(registerUser.fulfilled, (state) => {
+            .addCase(registerUser.fulfilled, (state, action) => {
                 state.isLoading = false;
+                state.user = action.payload.user;
+                state.token = action.payload.access_token;
+                state.isAuthenticated = true;
                 state.error = null;
                 state.fieldErrors = {};
             })

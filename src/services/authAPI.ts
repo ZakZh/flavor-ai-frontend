@@ -1,25 +1,9 @@
 import api from './api';
-
-export interface LoginCredentials {
-    email: string;
-    password: string;
-}
-
-export interface RegisterData {
-    email: string;
-    password: string;
-    username: string;
-    confirmPassword?: string;
-}
-
-export interface AuthResponse {
-    access_token: string;
-    user: {
-        id: number;
-        email: string;
-        username: string;
-    };
-}
+import type {
+    AuthResponse,
+    LoginCredentials,
+    RegisterData,
+} from '../store/types/auth.types';
 
 export interface User {
     id: number;
@@ -35,7 +19,7 @@ export const authAPI = {
         return response.data;
     },
 
-    async register(userData: RegisterData): Promise<{ message: string }> {
+    async register(userData: RegisterData): Promise<AuthResponse> {
         const response = await api.post('/auth/register', userData);
         return response.data;
     },

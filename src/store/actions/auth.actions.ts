@@ -35,21 +35,18 @@ export const loginUser = createAsyncThunk<
 
 // Register user
 export const registerUser = createAsyncThunk<
-    { message: string },
+    AuthResponse,
     RegisterData,
-    { rejectValue: string }
+    { rejectValue: any }
 >(AUTH_ACTION_TYPES.REGISTER, async (userData, { rejectWithValue }) => {
     try {
         const response = await authAPI.register(userData);
+        localStorage.setItem('token', response.access_token);
         return response;
     } catch (error: any) {
-        const errorMessage =
-            error.response?.data?.message ||
-            error.response?.data?.error ||
-            error.message ||
-            'Registration failed';
-
-        return rejectWithValue(errorMessage);
+        return rejectWithValue(
+            error.response?.data || { message: 'Registration failed' }
+        );
     }
 });
 
