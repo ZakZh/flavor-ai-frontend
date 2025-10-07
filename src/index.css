@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import 'tailwindcss';
+
+:root {
+    /* Primary colors (Orange theme) */
+    --color-primary: #f1750a; /* orange-500 */
+    --color-primary-hover: #e25a05; /* orange-600 */
+    --color-primary-light: #fef7ee; /* orange-50 */
+
+    /* Utility colors */
+    --color-accent: #f49332; /* orange-400 */
+    --color-success: #22c55e; /* green-500 */
+    --color-error: #ef4444; /* red-500 */
+}
+
+body {
+    background-color: #f9fafb;
+    color: #111827;
+    font-family: 'Inter', system-ui, sans-serif;
+}
